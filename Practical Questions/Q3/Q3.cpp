@@ -23,10 +23,17 @@ class CLL
     {
         cursor = NULL;
     }
-    ~CLL()
-    {
-
+~CLL() {
+    if (cursor != NULL) {
+        Node* current = cursor;
+        do {
+            Node* next = current->next;
+            delete current;
+            current = next;
+        } while (current != cursor);
+        cursor = NULL;
     }
+}
     void insertEle(int x)
     {
         Node* newNode = new Node(x);
